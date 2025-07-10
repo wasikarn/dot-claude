@@ -1,0 +1,21 @@
+# Ignore node_modules directory
+node_modules/
+ide/
+projects/
+statsig/
+todos/
+
+# Ignore build directories
+build/
+dist/
+.vscode/
+.idea/
+
+# Local configuration files
+*.local.md
+*.local.json
+*.local.yaml
+*.local.yml
+*.local.env
+*.local.env.json
+*.local.env.yaml
