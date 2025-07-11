@@ -1,131 +1,86 @@
 # Prompt Improver
 
-## Purpose
-This command analyzes and enhances prompts for Claude, applying Anthropic's best practices to improve response quality while optimizing for small context windows and cost efficiency.
+## Usage: $ARGUMENTS
 
-## Usage
-```
-/prompt-improver "Your prompt here"
-```
+Enhance existing prompts for better Claude completions while maintaining "Small Context, Small Cost" principles.
 
-## Prompt to improve: $ARGUMENTS
+## Process
 
-I'll enhance your prompt focusing on clarity, efficiency, and best practices for Claude Code.
+1. **Analyze Current Prompt**
+   - Identify core tasks and goals
+   - Determine essential context
+   - Note existing examples and formatting
+   - Evaluate clarity and specificity
 
-## Analysis Process
+2. **Apply Enhancement Techniques**
+   - **Chain-of-thought reasoning**: Add a dedicated section for systematic problem-solving before responding
+   - **Example standardization**: Convert examples to consistent XML format for improved clarity
+   - **Example enrichment**: Augment existing examples with aligned chain-of-thought reasoning
+   - **Structure optimization**: Clarify prompt structure and correct grammatical issues
+   - **Prefill addition**: Direct Claude's actions and enforce output formats
 
-1. **Structure & Intent**
-   - Identify core purpose and goals
-   - Assess strengths and weaknesses
-   - Check alignment with Claude's capabilities
+3. **Context Optimization**
+   - Remove unnecessary context to reduce token usage
+   - Prioritize critical information
+   - Use concise language without sacrificing clarity
+   - Consider splitting complex tasks into smaller prompts
 
-2. **Reasoning Enhancement**
-   - Add concise reasoning steps where needed
-   - Include verification checkpoints
-   - Balance reasoning with direct responses
+## Implementation Guidelines
 
-3. **Example Optimization**
-   - Format examples consistently
-   - Demonstrate ideal input/output patterns
-   - Include key edge cases only when necessary
+### Small Context, Small Cost Principles
+- Include only essential information
+- Use precise language and clear formatting
+- Leverage system prompts for persistent instructions
+- Consider multi-turn interactions for complex tasks
 
-4. **Context Efficiency**
-   - Include only essential context
-   - Remove unnecessary details
-   - Structure for minimal token usage
-
-5. **Validation Strategy**
-   - Add lightweight verification mechanisms
-   - Focus on critical error handling only
-
-## Improvement Strategy
-
-### Concise Reasoning Framework
-```
-<thinking>
-  • Problem: [Core issue]
-  • Approach: [Solution strategy]
-  • Verification: [Key validation point]
-</thinking>
-```
-
-### Efficient Example Format
-**Before:**
-```
-User: How do I calculate compound interest?
-Assistant: The formula is A = P(1 + r/n)^(nt)
-```
-
-**After:**
+### Prompt Structure Example
 ```xml
+<system>
+Clear instruction about Claude's role and constraints
+</system>
+
+<user>
+<instruction>
+Precise task description
+</instruction>
+
+<context>
+Essential information needed for the task
+</context>
+
+<examples>
 <example>
-  <user>How do I calculate compound interest?</user>
-  <assistant>
-    Compound interest formula: A = P(1 + r/n)^(nt)
-
-    Where:
-    • A: Final amount
-    • P: Principal
-    • r: Annual rate (decimal)
-    • n: Compounds per year
-    • t: Time in years
-
-    Example: $1,000 at 5% monthly for 5 years = $1,283.36
-  </assistant>
+  <input>Sample input</input>
+  <thinking>Step-by-step reasoning</thinking>
+  <output>Expected output format</output>
 </example>
+</examples>
+</user>
+
+<assistant>
+<thinking>
+Space for Claude to work through the problem systematically
+</thinking>
+
+<response>
+Template for how the final answer should be structured
+</response>
+</assistant>
 ```
 
-### Simple Validation
-```
-<check>
-• Does solution address core request?
-• Are edge cases handled appropriately?
-• Is explanation clear and concise?
-</check>
-```
+## Validation
 
-### Streamlined Response Template
-```
-I'll address your request efficiently.
+1. **Test the improved prompt**
+   - Compare results with original prompt
+   - Evaluate accuracy, completeness, and format adherence
 
-<thinking>Problem: [Brief analysis]</thinking>
+2. **Refine based on feedback**
+   - Note what works and what doesn't
+   - Iterate on problem areas
 
-[Concise, direct solution that addresses the user's request]
-```
+## Resources
+- [Anthropic Prompt Improver](https://www.anthropic.com/news/prompt-improver)
+- [Claude Prompt Engineering Guidelines](https://docs.anthropic.com/claude/docs/introduction-to-prompt-design)
+- [Prompt Engineering Best Practices](https://docs.anthropic.com/claude/docs/prompt-engineering-best-practices)
 
-## Implementation
-
-### Original Prompt
-```
-$ARGUMENTS
-```
-
-### Enhanced Prompt
-[Improved prompt with efficient structure]
-
-## Verification Checklist
-- [ ] Essential reasoning included
-- [ ] Examples formatted efficiently
-- [ ] Clear structure maintained
-- [ ] Original intent preserved
-- [ ] Context size optimized
-- [ ] Token usage minimized
-
-Prompt efficiency score: [1-10]
-
-## Benefits of Enhanced Prompt
-- Efficient token usage and reduced costs
-- Focused reasoning for complex problems
-- Consistent, streamlined responses
-- Improved error handling for edge cases
-- Faster processing with smaller context
-- Better alignment with Claude Code capabilities
-
-## Context & Cost Optimization
-- Eliminated unnecessary details
-- Retained only essential instructions
-- Minimized token usage
-- Optimized for smaller context windows
-- Structured for maximum efficiency
-
-The enhanced prompt guides Claude to deliver accurate, efficient responses while minimizing token usage and processing time.
+Remember: The goal is to create prompts that produce high-quality responses while minimizing context size and token usage for cost efficiency.
